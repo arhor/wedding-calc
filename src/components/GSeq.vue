@@ -13,23 +13,23 @@
 import { commaSeparate, notEmptyArray } from '@/utils/ArrayUtils';
 
 export default {
-  name: 'GenericList',
+  name: 'GSeq',
   props: {
     title: {
       type: String,
       default: null,
     },
-    items: {
+    xs: {
       type: Array,
       default: () => [],
     },
   },
   computed: {
     notEmpty() {
-      return notEmptyArray(this.items);
+      return notEmptyArray(this.xs);
     },
     commaSeparatedString() {
-      return commaSeparate(this.items);
+      return commaSeparate(this.xs);
     },
   },
 };

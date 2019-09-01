@@ -6,64 +6,69 @@
       </v-card-title>
       <v-card-text>
         <v-list>
-        <v-list-group
-          v-for="(dish, i) in all"
-          :key="`dish-${i}`"
-          no-action
-          value="true"
-        >
-          <template v-slot:activator>
-            <v-list-tile>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  {{ dish.category }}
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </template>
           <v-list-group
-            v-for="(sub, i) in dish.items"
-            :key="`sub-${i}`"
+            v-for="(item, i) in items"
+            :key="`dish-${i}`"
             no-action
-            sub-group
-            value="true"
           >
             <template v-slot:activator>
               <v-list-tile>
                 <v-list-tile-content>
                   <v-list-tile-title>
-                    {{ sub.subcategory }}
+                    {{ item.category }}
                   </v-list-tile-title>
                 </v-list-tile-content>
               </v-list-tile>
             </template>
-            <v-list-tile
-              v-for="(meal, i) in sub.items"
-              :key="`meal-${i}`"
+            <v-list-group
+              v-for="(subitem, i) in item.items"
+              :key="`sub-${i}`"
+              no-action
+              sub-group
             >
-              <v-list-tile-content>
-                <v-layout row>
-                  <v-flex xs8>{{ meal.name }}</v-flex>
-                  <v-flex xs4>{{ meal.amount }}/{{ meal.unit }}</v-flex>
-                  <v-flex xs4>{{ meal.price }}</v-flex>
-                </v-layout>
-              </v-list-tile-content>
-            </v-list-tile>
+              <template v-slot:activator>
+                <v-list-tile>
+                  <v-list-tile-content>
+                    <v-list-tile-title>
+                      {{ subitem.category }}
+                    </v-list-tile-title>
+                  </v-list-tile-content>
+                </v-list-tile>
+              </template>
+              <v-list-tile
+                v-for="(dish, i) in subitem.items"
+                :key="`meal-${i}`"
+                @click="addToCart(dish)"
+              >
+                <v-list-tile-content>
+                  <v-layout row wrap>
+                    <v-flex xs9>{{ dish.name }}</v-flex>
+                    <v-flex xs2>{{ dish.amount }}/{{ dish.unit }}</v-flex>
+                    <v-flex xs1>{{ dish.price }}</v-flex>
+                  </v-layout>
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list-group>
           </v-list-group>
-        </v-list-group>
-      </v-list>
+        </v-list>
       </v-card-text>
     </v-card>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-
 export default {
   name: 'WeddingMenu',
-  computed: {
-    ...mapState('menu', ['all']),
+  props: {
+    items: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  methods: {
+    addToCart(item) {
+      this.$emit('add-to-cart', item);
+    },
   },
 };
 </script>

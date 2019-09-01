@@ -1,9 +1,9 @@
-import getters from './getters';
 import actions from './actions';
+import getters from './getters';
 import mutations from './mutations';
 
 const state = {
-  menuItems: [],
+  cartItems: [],
 };
 
 export default {
