@@ -1,5 +1,10 @@
 {
   "name": "wedding-calc",
+  "description": "Simple Vue-based electron app for planning wedding dinner budget",
+  "author": {
+    "name": "Maksim Buryshynets",
+    "email": "arhor18@gmail.com"
+  },
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -17,7 +22,7 @@
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-router": "^3.0.7",
-    "vuetify": "^1.5.16",
+    "vuetify": "^1.5.18",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

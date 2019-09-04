@@ -4,6 +4,7 @@ import mutations from './mutations';
 
 const state = {
   cartItems: [],
+  totalGuests: 0,
 };
 
 export default {

@@ -7,5 +7,11 @@ export default {
   removeItem({ commit }, item) {
     commit('REMOVE_ITEM', item);
   },
+  addGuest({ commit }) {
+    commit('ADD_GUEST');
+  },
+  removeGuest({ commit }) {
+    commit('REMOVE_GUEST');
+  },
 
 };
