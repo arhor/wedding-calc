@@ -1,7 +1,7 @@
 <template>
   <v-layout row justify-center align-center>
     <v-flex class="px-3">
-      <strong>Total price:</strong> {{ price }}
+      <strong>Total price:</strong> {{ price.toFixed(2) }}
     </v-flex>
     <v-flex class="px-3">
       <strong>Per guest:</strong> {{ pricePerGuest }}

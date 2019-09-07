@@ -13,6 +13,11 @@ Vue.filter('shorten', (value, length) => {
   return value;
 });
 
+Vue.filter('reduceWeight', (value) => {
+  const weight = value || '';
+  return weight.split('/').map(w => Number(w)).reduce((a, b) => a + b, 0);
+});
+
 Vue.config.productionTip = false;
 
 new Vue({

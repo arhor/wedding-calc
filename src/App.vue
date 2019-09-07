@@ -1,9 +1,7 @@
 <template>
   <v-app>
     <v-toolbar color="cyan" dark fixed app>
-      <v-toolbar-title>
-        Wedding calc
-      </v-toolbar-title>
+      <v-toolbar-title>Wedding calc</v-toolbar-title>
       <v-spacer></v-spacer>
       <wedding-cart></wedding-cart>
     </v-toolbar>
@@ -27,7 +25,7 @@ export default {
   components: {
     WeddingCart,
   },
-  mounted() {
+  beforeCreate() {
     this.$store.dispatch('menu/load');
   },
 };
