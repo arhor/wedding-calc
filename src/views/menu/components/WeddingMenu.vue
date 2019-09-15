@@ -4,7 +4,7 @@
       <span class="title font-weight-light">Menu</span>
     </v-card-title>
     <v-card-text>
-      <v-list two-line>
+      <v-list>
         <v-list-group
           v-for="(item, i) in items"
           :key="`dish-${i}`"
@@ -41,15 +41,20 @@
               <v-list-tile-content class="body-1">
                 <v-list-tile-title>
                   <v-layout row wrap>
-                    <v-flex xs10>{{ dish.name | shorten(60) }}</v-flex>
-                    <v-flex xs1>{{ dish.amount }} {{ dish.unit }}</v-flex>
+                    <v-flex xs9>{{ dish.name | shorten(75) }}</v-flex>
+                    <v-flex xs2>{{ dish.amount }} {{ dish.unit }}</v-flex>
                     <v-flex xs1>{{ dish.price }}</v-flex>
                   </v-layout>
                 </v-list-tile-title>
               </v-list-tile-content>
               <v-list-tile-action>
-                <v-btn flat icon color="pink" @click="addToCart(dish) ">
-                  <v-icon dark>favorite</v-icon>
+                <v-btn outline fab small color="pink" @click="addToCart(dish) ">
+                  <v-icon dark>add</v-icon>
+                </v-btn>
+              </v-list-tile-action>
+              <v-list-tile-action>
+                <v-btn outline fab small color="pink" @click="addToCart(dish, 5) ">
+                  <v-icon dark>add</v-icon>
                 </v-btn>
               </v-list-tile-action>
             </v-list-tile>
@@ -70,8 +75,9 @@ export default {
     },
   },
   methods: {
-    addToCart(item) {
-      this.$emit('add-to-cart', item);
+    addToCart(item, amount) {
+      const order = { item, amount: (amount || 1) };
+      this.$emit('add-to-cart', order);
     },
   },
 };

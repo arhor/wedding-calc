@@ -12,11 +12,11 @@
     <v-btn flat icon small color="primary" @click="removeGuest">
       <v-icon dark>remove</v-icon>
     </v-btn>
-    <v-btn flat icon small color="pink" @click="addGuest ">
+    <v-btn flat icon small color="pink" @click="addGuest">
       <v-icon dark>add</v-icon>
     </v-btn>
     <v-btn icon large @click="displayCart" >
-      <v-icon large>shopping_basket</v-icon>
+      <v-icon large>shopping_cart</v-icon>
     </v-btn>
   </v-layout>
 </template>

@@ -1,4 +1,4 @@
-# dnd-homebrew-app
+# Wedding calc
 
 ## Project setup
 ```

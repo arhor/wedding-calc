@@ -48,8 +48,23 @@ export default {
     amountPerGuest(dish) {
       const { amount, unit } = dish[0];
       const totalAmount = dish[1];
+      let normalizedAmount;
+      switch (typeof amount) {
+        case 'number':
+          normalizedAmount = amount;
+          break;
+        case 'string':
+          normalizedAmount = amount
+            .split('/')
+            .map(x => Number(x))
+            .reduce((a, b) => a + b, 0);
+          break;
+        default:
+          normalizedAmount = 0;
+          break;
+      }
       const perGuest = (this.guests > 0)
-        ? (amount * totalAmount) / this.guests
+        ? (normalizedAmount * totalAmount) / this.guests
         : 0;
       return `${perGuest.toFixed(2)} ${unit}`;
     },

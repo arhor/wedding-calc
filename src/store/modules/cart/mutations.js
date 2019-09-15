@@ -1,17 +1,13 @@
 export default {
 
-  ADD_ITEM(state, item) {
+  ADD_ITEM: (state, order) => {
     const itemsMap = new Map(state.cartItems);
-    if (itemsMap.has(item)) {
-      const amount = itemsMap.get(item);
-      itemsMap.set(item, amount + 1);
-    } else {
-      itemsMap.set(item, 1);
-    }
+    const amount = itemsMap.get(order.item);
+    itemsMap.set(order.item, (amount || 0) + order.amount);
     state.cartItems = Array.from(itemsMap);
   },
 
-  REMOVE_ITEM(state, item) {
+  REMOVE_ITEM: (state, item) => {
     const itemsMap = new Map(state.cartItems);
     if (itemsMap.has(item)) {
       const amount = itemsMap.get(item);
@@ -22,16 +18,6 @@ export default {
       }
     }
     state.cartItems = Array.from(itemsMap);
-  },
-
-  ADD_GUEST(state) {
-    state.totalGuests += 1;
-  },
-
-  REMOVE_GUEST(state) {
-    if (state.totalGuests > 0) {
-      state.totalGuests -= 1;
-    }
   },
 
 };

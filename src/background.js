@@ -20,16 +20,6 @@ function createWindow() {
     show: false,
   });
 
-  let splashscreen = new BrowserWindow({
-    width: 350,
-    height: 338,
-    center: true,
-    transparent: true,
-    frame: false,
-    alwaysOnTop: true,
-    parent: win,
-  });
-
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
     if (!process.env.IS_TEST) {
@@ -37,24 +27,10 @@ function createWindow() {
     }
   } else {
     createProtocol('app');
-    splashscreen.loadURL('app://./logo.svg');
     win.loadURL('app://./index.html');
   }
 
-  win.once('ready-to-show', () => {
-    let opacity = 1;
-    const fading = setInterval(() => {
-      opacity -= 0.01;
-      if (opacity >= 0) {
-        splashscreen.setOpacity(opacity);
-      } else {
-        splashscreen.destroy();
-        splashscreen = null;
-        win.show();
-        clearInterval(fading);
-      }
-    }, 20);
-  });
+  win.once('ready-to-show', () => win.show());
 
   win.on('closed', () => {
     win = null;

@@ -1,9 +1,5 @@
 export default {
 
-  totalPrice(state) {
-    return state.cartItems
-      .map(it => it[0].price * it[1])
-      .reduce((a, b) => a + b, 0);
-  },
+  totalPrice: state => state.cartItems.map(_ => _[0].price * _[1]).reduce((a, b) => a + b, 0),
 
 };

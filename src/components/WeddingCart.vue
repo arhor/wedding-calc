@@ -33,15 +33,13 @@ export default {
     display: false,
   }),
   computed: {
-    ...mapState('cart', [
-      'cartItems',
-      'totalGuests',
-    ]),
+    ...mapState('cart', ['cartItems']),
+    ...mapState('guests', ['totalGuests']),
     ...mapGetters('cart', ['totalPrice']),
   },
   methods: {
-    ...mapActions('cart', [
-      'removeItem',
+    ...mapActions('cart', ['removeItem']),
+    ...mapActions('guests', [
       'addGuest',
       'removeGuest',
     ]),
