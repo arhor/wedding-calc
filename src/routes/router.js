@@ -12,11 +12,6 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/menu',
-      name: 'menu',
-      component: () => import('@/views/menu'),
-    },
-    {
       path: '/category',
       name: 'categiry',
       component: () => import('@/views/category'),
