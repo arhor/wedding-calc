@@ -2,8 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './routes/router';
 import store from './store/index';
-import './plugins/vuetify';
-import './assets/style/main.scss';
+import vuetify from './plugins/vuetify';
 
 Vue.filter('shorten', (value, length) => {
   const maxLength = length || 50;
@@ -21,6 +20,7 @@ Vue.filter('reduceWeight', (value) => {
 Vue.config.productionTip = false;
 
 new Vue({
+  vuetify,
   router,
   store,
   render: h => h(App),

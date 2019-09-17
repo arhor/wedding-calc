@@ -39,5 +39,9 @@ module.exports = {
     parser: 'babel-eslint',
   },
 
-  extends: ['plugin:vue/essential', '@vue/airbnb'],
+  extends: [
+    'plugin:vue/essential',
+    // 'eslint:recommended',
+    '@vue/airbnb',
+  ],
 };

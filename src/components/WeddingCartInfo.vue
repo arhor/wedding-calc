@@ -9,10 +9,10 @@
     <v-flex class="px-3">
       <strong>Guests:</strong> {{ guests }}
     </v-flex>
-    <v-btn flat icon small color="primary" @click="removeGuest">
+    <v-btn text icon small color="primary" @click="removeGuest">
       <v-icon dark>remove</v-icon>
     </v-btn>
-    <v-btn flat icon small color="pink" @click="addGuest">
+    <v-btn text icon small color="pink" @click="addGuest">
       <v-icon dark>add</v-icon>
     </v-btn>
     <v-btn icon large @click="displayCart" >

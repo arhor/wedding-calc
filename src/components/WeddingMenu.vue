@@ -1,18 +1,20 @@
 <template>
-  <v-list class="pa-1">
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-title>Menu</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
+  <v-list dense>
+    <v-list-item>
+      <v-list-item-content>
+        <v-list-item-title>Menu</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
     <v-divider light/>
-    <v-list-tile
+    <v-list-item
       v-for="(category, i) in categories"
       :key="`category-${i}`"
       :to="`/category?name=${category}`"
     >
-      {{ category }}
-    </v-list-tile>
+      <v-list-item-content>
+        <v-list-item-title>{{ category }}</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
   </v-list>
 </template>
 

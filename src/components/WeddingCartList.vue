@@ -2,13 +2,13 @@
   <v-card>
     <v-card-text>
       <v-list v-if="items">
-        <v-list-tile
+        <v-list-item
           v-for="(item, i) in items"
           :key="`cartItem-${i}`"
           @click="removeItem(item[0])"
         >
-          <v-list-tile-content class="caption">
-            <v-list-tile-title>
+          <v-list-item-content class="caption">
+            <v-list-item-title>
               <v-layout row wrap>
                 <v-flex xs9>
                   <p>{{ item[0].name | shorten }}</p>
@@ -20,9 +20,9 @@
                   {{ amountPerGuest(item) }}
                 </v-flex>
               </v-layout>
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-card-text>
   </v-card>
