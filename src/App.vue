@@ -8,7 +8,7 @@
     >
       <wedding-menu/>
     </v-navigation-drawer>
-    <v-app-bar color="cyan" dark fixed app>
+    <v-app-bar color="cyan" dark app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
       <v-toolbar-title>
         <v-btn text to="/">

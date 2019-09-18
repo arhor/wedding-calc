@@ -1,25 +1,27 @@
 <template>
   <v-container v-if="items">
-    <v-layout row wrap>
-      <v-data-iterator
-        :items="items"
-        :rows-per-page-items="rowsPerPageItems"
-        :pagination.sync="pagination"
-        content-tag="v-layout"
-        row
-        wrap
-      >
-        <template v-slot:item="props">
-          <v-flex
-            xs12
-            sm6
-            md4
+    <v-data-iterator
+      :items="items"
+      :items-per-page.sync="itemsPerPage"
+      :footer-props="{ itemsPerPageOptions }"
+    >
+      <template v-slot:default="props">
+        <v-row>
+          <v-col
+            v-for="(item, i) in props.items"
+            :key="`item-${i}`"
+            cols="12"
+            sm="6"
+            md="4"
           >
-            <wedding-menu-category-item :item="props.item" @add-to-cart="addToCart" />
-          </v-flex>
-        </template>
-      </v-data-iterator>
-    </v-layout>
+            <wedding-menu-category-item
+              :item="item"
+              @add-to-cart="addToCart"
+            />
+          </v-col>
+        </v-row>
+      </template>
+    </v-data-iterator>
   </v-container>
 </template>
 
@@ -38,10 +40,8 @@ export default {
     WeddingMenuCategoryItem,
   },
   data: () => ({
-    rowsPerPageItems: [9],
-    pagination: {
-      rowsPerPage: 9,
-    },
+    itemsPerPageOptions: [9],
+    itemsPerPage: 9,
   }),
   methods: {
     addToCart(order) {

@@ -1,6 +1,6 @@
 <template>
-  <v-layout column v-if="name">
-    <v-flex>
+  <v-row v-if="name">
+    <v-col cols="12">
       <span class="px-3">{{ name }}</span>
       <v-menu offset-y v-if="hasSubcategories(name)">
         <template v-slot:activator="{ on }">
@@ -13,23 +13,25 @@
           </v-btn>
         </template>
         <v-list>
-          <v-list-tile
+          <v-list-item
             v-for="(subcategory, i) in subcategories(name)"
             :key="`subcategory-${i}`"
             @click="init(subcategory)"
           >
-            <v-list-tile-title>{{ subcategory }}</v-list-tile-title>
-          </v-list-tile>
+            <v-list-item-content>
+              <v-list-item-title>{{ subcategory }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-menu>
-    </v-flex>
-    <v-flex>
+    </v-col>
+    <v-col cols="12">
       <wedding-menu-category
         :items="currentCategory.items"
         @add-to-cart="addItem"
       />
-    </v-flex>
-  </v-layout>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
