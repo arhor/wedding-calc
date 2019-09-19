@@ -1,5 +1,5 @@
 import { app, protocol, BrowserWindow } from 'electron';
-import { createProtocol, installVueDevtools } from 'vue-cli-plugin-electron-builder/lib';
+import { createProtocol } from 'vue-cli-plugin-electron-builder/lib';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -49,16 +49,7 @@ app.on('activate', () => {
   }
 });
 
-app.on('ready', async () => {
-  if (isDevelopment && !process.env.IS_TEST) {
-    try {
-      await installVueDevtools();
-    } catch (e) {
-      console.error('Vue Devtools failed to install:', e.toString());
-    }
-  }
-  createWindow();
-});
+app.on('ready', () => createWindow());
 
 if (isDevelopment) {
   if (process.platform === 'win32') {
