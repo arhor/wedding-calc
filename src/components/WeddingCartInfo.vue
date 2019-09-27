@@ -1,14 +1,14 @@
 <template>
-  <v-layout row justify-center align-center>
-    <v-flex class="px-3">
+  <v-row align="center">
+    <v-col class="px-3">
       <strong>Total price:</strong> {{ price.toFixed(2) }}
-    </v-flex>
-    <v-flex class="px-3">
+    </v-col>
+    <v-col class="px-3">
       <strong>Per guest:</strong> {{ pricePerGuest }}
-    </v-flex>
-    <v-flex class="px-3">
+    </v-col>
+    <v-col class="px-3">
       <strong>Guests:</strong> {{ guests }}
-    </v-flex>
+    </v-col>
     <v-btn text icon small color="primary" @click="removeGuest">
       <v-icon dark>remove</v-icon>
     </v-btn>
@@ -18,7 +18,7 @@
     <v-btn icon large @click="displayCart" >
       <v-icon large>shopping_cart</v-icon>
     </v-btn>
-  </v-layout>
+  </v-row>
 </template>
 
 <script>

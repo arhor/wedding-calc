@@ -12,7 +12,7 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/category',
+      path: '/category/:name',
       name: 'categiry',
       component: () => import('@/views/category'),
     },

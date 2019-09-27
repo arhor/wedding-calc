@@ -9,7 +9,7 @@
     <v-list-item
       v-for="(category, i) in categories"
       :key="`category-${i}`"
-      :to="`/category?name=${category}`"
+      :to="`/category/${category}`"
     >
       <v-list-item-content>
         <v-list-item-title>{{ category }}</v-list-item-title>

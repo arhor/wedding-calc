@@ -59,7 +59,7 @@ export default {
     };
   },
   beforeMount() {
-    this.name = this.$route.query.name;
+    this.name = this.$route.params.name;
     this.init(this.subcategories(this.name)[0]);
   },
   methods: {
@@ -78,7 +78,7 @@ export default {
   },
   watch: {
     $route(to) {
-      this.name = to.query.name;
+      this.name = to.params.name;
       this.init(this.subcategories(this.name)[0]);
     },
   },

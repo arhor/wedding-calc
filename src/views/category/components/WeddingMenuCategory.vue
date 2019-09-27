@@ -1,32 +1,26 @@
 <template>
   <v-container v-if="items">
-    <v-data-iterator
+    <v-data-table
+      :headers="headers"
       :items="items"
-      :items-per-page.sync="itemsPerPage"
-      :footer-props="{ itemsPerPageOptions }"
+      :items-per-page="6"
+      class="elevation-1"
     >
-      <template v-slot:default="props">
-        <v-row>
-          <v-col
-            v-for="(item, i) in props.items"
-            :key="`item-${i}`"
-            cols="12"
-            sm="6"
-            md="4"
-          >
-            <wedding-menu-category-item
-              :item="item"
-              @add-to-cart="addToCart"
-            />
-          </v-col>
+      <template v-slot:item.amount="{ item }">
+        {{ item.amount }} {{ item.unit }}
+      </template>
+      <template v-slot:item.action="{ item }">
+        <v-row align="center" justify="center">
+          <add-to-cart :item="item" @add-to-cart="addToCart"/>
+          <add-to-cart :item="item" :amount="5" @add-to-cart="addToCart"/>
         </v-row>
       </template>
-    </v-data-iterator>
+    </v-data-table>
   </v-container>
 </template>
 
 <script>
-import WeddingMenuCategoryItem from './WeddingMenuCategoryItem.vue';
+import AddToCart from './AddToCart.vue';
 
 export default {
   name: 'WeddingMenuCategory',
@@ -37,11 +31,37 @@ export default {
     },
   },
   components: {
-    WeddingMenuCategoryItem,
+    AddToCart,
   },
   data: () => ({
     itemsPerPageOptions: [9],
     itemsPerPage: 9,
+    headers: [
+      {
+        text: 'Name',
+        align: 'left',
+        sortable: false,
+        value: 'name',
+        width: 650,
+      },
+      {
+        text: 'Amount per portion',
+        align: 'center',
+        sortable: false,
+        value: 'amount',
+      },
+      {
+        text: 'Price',
+        align: 'left',
+        value: 'price',
+      },
+      {
+        text: 'Actions',
+        sortable: false,
+        align: 'center',
+        value: 'action',
+      },
+    ],
   }),
   methods: {
     addToCart(order) {

@@ -32,9 +32,7 @@ function createWindow() {
 
   win.once('ready-to-show', () => win.show());
 
-  win.on('closed', () => {
-    win = null;
-  });
+  win.on('closed', () => { win = null; });
 }
 
 app.on('window-all-closed', () => {
